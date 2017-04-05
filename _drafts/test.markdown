@@ -4,6 +4,102 @@ title:  "Draft test: Welcome to Jekyll!"
 date:   2017-04-01 16:25:13 +0100
 categories: jekyll update
 ---
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+Let's test some inline math $x$, $y$, $x_1$, $y_1$.
+
+Now a inline math with special character: $|\psi\rangle$, $x'$, $x^\*$.
+
+
+1:
+
+Test a display math:
+$$
+   |\psi_1\rangle = a|0\rangle + b|1\rangle
+$$
+Is it O.K.?
+
+
+2:
+
+Test a display math with equation number:
+\begin{equation}
+   |\psi_1\rangle = a|0\rangle + b|1\rangle
+\end{equation}
+Is it O.K.?
+
+
+3:
+
+Test a display math with equation number:
+$$
+  \begin{align}
+    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\
+                   &= c|0\rangle + d|1\rangle
+  \end{align}
+$$
+Is it O.K.?
+
+
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
+
+
+5:
+
+Test a display math with equation number:
+\begin{align}
+    |\psi_1\rangle = a|0\rangle + b|1\rangle
+\end{align}
+Is it O.K.?
+
+
+6:
+
+And test a display math without equaltion number:
+\begin{align\*}
+    |\psi_1\rangle &= a|0\rangle + b|1\rangle \\\\
+    |\psi_2\rangle &= c|0\rangle + d|1\rangle
+\end{align\*}
+Is it O.K.?
+
+
+
+
+Group                     | Domain          | First Appearance
+------------------------- | --------------- | ----------------
+ShinRa                    | Mako Reactors   | FFVII
+Moogles                   | MogNet          | FFIII
+Vana'diel Chocobo Society | Chocobo Raising | FFXI:TOAU
+
+
+
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
