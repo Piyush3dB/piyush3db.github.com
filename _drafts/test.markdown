@@ -28,7 +28,7 @@ then the two feedforward nodes can be combined with the add node they feed into 
 1. Feedforward linear transformations
    Size 4HxV matrix-matrix multiply for i2h
    Size 4HxH matrix-matrix multiply for p2h
-   2 size Bx4H pointwise for i2h and p2h bias
+   2 size Bx4H pointwise add for i2h and p2h bias
 
   input = (BxV) with weights=(4HxV), output = (Bx4H)
   input = (BxH) with weights=(4HxH), output = (Bx4H)
