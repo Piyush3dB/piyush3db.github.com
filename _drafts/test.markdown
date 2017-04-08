@@ -5,6 +5,58 @@ date:   2017-04-01 16:25:13 +0100
 categories: jekyll update
 ---
 
+Vanilla RNN:
+
+1. Matrix-Matrix multiplies
+  input = (BxV) with weights=(HxV), output = (BxH)
+  input = (BxH) with weights=(HxH), output = (BxH)
+  (input = (Bx(V+H)), output = (BxhH))
+2. 1 pointwise tanh range limiter
+3. 2B+1 pointwise add for linear transformations
+   2B batch-wise broadcast at the feedforward nodes
+   1 for the previous+input fuse
+
+
+
+
+LSTM Cell:
+
+Set V = H
+
+then the two feedforward nodes can be combined with the add node they feed into to give a single mat-mat multiplication
+
+1. Feedforward linear transformations
+   Size 4HxV matrix-matrix multiply for i2h
+   Size 4HxH matrix-matrix multiply for p2h
+   2 size Bx4H pointwise for i2h and p2h bias
+
+  input = (BxV) with weights=(4HxV), output = (Bx4H)
+  input = (BxH) with weights=(4HxH), output = (Bx4H)
+  (input = (Bx(V+H)), output = (Bx4H))
+2. 3 pointwise sigmoid for coefficient calculation (size BxH)
+3. 2 pointwise tanh range limiters (size BxH)
+4. 2 pointwise add for linear transformations
+   1 for the input+previous fuse (size BxH)
+   1 for the hidden+state fuse (size BxH)
+5. 2 pointwise mul for the filters (size BxH)
+
+
+GRU Cell:
+
+1. Matrix-Matrix multiplies
+  input = (BxV) with weights=(4HxV), output = (Bx4H)
+  input = (BxH) with weights=(4HxH), output = (Bx4H)
+  (input = (Bx(V+H)), output = (Bx4H))
+2. 3 pointwise sigmoid for coefficient calculation
+3. 2 pointwise tanh for range limiters
+4. 9 pointwise add for linear transformations
+   8 batch-wise broadcast at the feedforward nodes
+   1 for the hidden+state fuse
+5. 2 pointwise mul for the filters
+
+
+
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     TeX: {
